@@ -1,0 +1,22 @@
+{
+    "name": "aggreg82r/pay",
+    "description": "Aggreg82r pay package",
+    "keywords": ["aggreg82r", "package", "php"],
+    "license": "MIT",
+    "type": "package",
+    "autoload": {
+        "psr-4": {
+            "Aggreg82r\\Pay\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Jeff",
+            "email": "jeff.decena@yahoo.com"
+        }
+    ],
+    "require": {
+        "ext-curl": "*",
+        "php": "^7.3|^8.0"
+    }
+}
