@@ -31,11 +31,12 @@ composer require aggreg82r/pay
 
 ### Required fields
 
-- payment_gateway - Intended payment gateway
-- reference - Your reference code for this transaction, this is important to map out in your system the customer who made for this transaction
-- currency - Intended currency to bill your customer
-- name - The description in the checkout form of the chosen payment gateway
-- amount - The total amount
+- payment_gateway (string) - Intended payment gateway
+- recurring (boolean) - If this is a recurring payment of not
+- reference (string) - Your reference code for this transaction, this is important to map out in your system the customer who made for this transaction
+- name (string) - The description in the checkout form of the chosen payment gateway
+- amount (string) - The total amount
+- currency (string) - Intended currency to bill your customer
 
 2. Grab the form post data and do **CHECKOUT**
 
@@ -58,3 +59,39 @@ $checkout->now($postData);
 ```
 
 3. Once your customer has filled their credit card details, it will go back to your `success_url` you defined in your credential dashboard at https://aggreg82r.com
+
+4. Not PHP? No Problem. Try curl
+
+> Step 1. Your backend should request for the token first and save it to be used in Step 2.
+
+```curl
+curl --request POST \
+  --url https://aggreg82r.com/customer/auth \
+  --header 'Content-Type: application/json' \
+  --data '{
+        "api_key": "<YOUR-API-KEY>",
+        "api_secret": "<YOUR-API-SECRET>",
+        "grant_type": "client_credentials"
+    }'
+```
+
+> Step 2. Your html form above should post in your backend. Then, once you collected the data from the frontend post it to aggreg82r.com
+
+```curl
+curl --request POST \
+  --url https://aggreg82r.com/customer/checkout \
+  --header 'Authorization: Bearer <TOKEN-FROM-ABOVE-REQUEST>' \
+  --header 'Content-Type: application/json' \
+  --data '{
+        "payment_gateway": "stripe",
+        "recurring": "false",
+        "reference": "your-reference-string",
+        "name": "Your total cart amount from example.com",
+        "amount": "500.45",
+        "currency": "USD"
+    }'
+```
+
+> Step 3. Done.
+
+> This will redirect to the intended payment gateway for your customer to input their credit card number. Once they have finished, they will be redirected back to the `success_url` you set in your credential dashboard at https://aggreg82r.com
