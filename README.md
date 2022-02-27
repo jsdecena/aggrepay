@@ -60,9 +60,11 @@ $checkout->now($postData);
 
 3. Once your customer has filled their credit card details, it will go back to your `success_url` you defined in your credential dashboard at https://aggreg82r.com
 
-4. Not PHP? No Problem. Try curl
+___
 
-> Step 1. Your backend should request for the token first and save it to be used in Step 2.
+# Not PHP? No Problem. Try curl
+
+1. Your backend should request for the token first and save it to be used in Step 2.
 
 ```curl
 curl --request POST \
@@ -75,7 +77,7 @@ curl --request POST \
     }'
 ```
 
-> Step 2. Your html form above should post in your backend. Then, once you collected the data from the frontend post it to aggreg82r.com
+2. Your html form above should post in your backend. Then, once you collected the data from the frontend post it to aggreg82r.com
 
 ```curl
 curl --request POST \
@@ -92,6 +94,6 @@ curl --request POST \
     }'
 ```
 
-> Step 3. Done.
+3. Done.
 
 > This will redirect to the intended payment gateway for your customer to input their credit card number. Once they have finished, they will be redirected back to the `success_url` you set in your credential dashboard at https://aggreg82r.com
