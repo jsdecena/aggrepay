@@ -20,10 +20,11 @@ composer require aggreg82r/pay
 ```html
 <form action="https://aggreg82r.com/customer/checkout" method="post">
     <input type="hidden" name="payment_gateway" value="stripe">
+    <input type="hidden" name="recurring" value="false">
     <input type="hidden" name="reference" value="your-reference-string">
-    <input type="hidden" name="currency" value="php">
     <input type="hidden" name="name" value="Your total cart amount from example.com">
     <input type="hidden" value="amount" name="500.45">
+    <input type="hidden" name="currency" value="php">
     <button type="submit" class="btn btn-sm">Pay with Stripe</button>
 </form>
 ```
