@@ -47,7 +47,7 @@ $postData = $request->all(); // Important: Sanitize your data
 
 // Initialize your checkout
 $checkout = new \Aggreg82r\Pay\Checkout(
-    'https://aggreg82r.com',
+    'https://api.aggreg82r.com',
     '30aab829-ee2f-49c0-be87-a2149b382c7e', // API KEY
     '4c3e523d-1f78-4a97-8535-49e36763d0f5' // API SECRET
 );
@@ -68,7 +68,7 @@ ___
 
 ```curl
 curl --request POST \
-  --url https://aggreg82r.com/customer/auth \
+  --url https://api.aggreg82r.com/customer/auth \
   --header 'Content-Type: application/json' \
   --data '{
         "api_key": "<YOUR-API-KEY>",
@@ -81,7 +81,7 @@ curl --request POST \
 
 ```curl
 curl --request POST \
-  --url https://aggreg82r.com/customer/checkout \
+  --url https://api.aggreg82r.com/customer/checkout \
   --header 'Authorization: Bearer <TOKEN-FROM-ABOVE-REQUEST>' \
   --header 'Content-Type: application/json' \
   --data '{
